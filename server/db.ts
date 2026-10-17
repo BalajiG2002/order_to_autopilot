@@ -1,4 +1,5 @@
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import {
   UserProfile,
@@ -26,7 +27,10 @@ export interface DatabaseState {
   policy: ProcurementPolicy;
 }
 
-const DATA_DIR = path.resolve(process.cwd(), 'data');
+// Vercel's filesystem is read-only except for the OS temp dir.
+const DATA_DIR = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'order-autopilot-data')
+  : path.resolve(process.cwd(), 'data');
 const DB_FILE = path.join(DATA_DIR, 'store.json');
 
 export const INITIAL_USERS: UserProfile[] = [

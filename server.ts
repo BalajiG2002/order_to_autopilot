@@ -1288,7 +1288,12 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error('Fatal server startup error:', err);
-  process.exit(1);
-});
+// On Vercel the app is exported as a serverless handler instead of listening on a port.
+if (!process.env.VERCEL) {
+  startServer().catch((err) => {
+    console.error('Fatal server startup error:', err);
+    process.exit(1);
+  });
+}
+
+export default app;
