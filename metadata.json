@@ -1,0 +1,6 @@
+{
+  "name": "Order-to-Delivery Autopilot",
+  "description": "Email-first procurement and order-to-delivery autopilot featuring autonomous intake, rule-based approvals, supplier dispatch, automated tracking, chaser escalations, and continuous feedback scoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
